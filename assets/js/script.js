@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     }
+    document.getElementById('answer-box').addEventListener('keydown', function(event){
+        if(event.key === 'Enter'){
+            checkAnswer();
+        }
+    })
+
     runGame('addition');
 })
 
@@ -23,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+    // clear answer box of old value being displayed
+    document.getElementById('answer-box').value = '';
+
+    // focus the cursor to the answer box by default so user does not need to use the mouse
+    document.getElementById('answer-box').focus();
     // create two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
